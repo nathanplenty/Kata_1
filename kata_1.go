@@ -16,6 +16,7 @@ func NewStack() *Stack {
 // function adds a new input at the top of the stack (or bottom of the table) LIFO-rule
 func (s *Stack) Push(v interface{}) {
 	s.Value = append(s.Value, v)
+	fmt.Println("[", v, "] pushed!")
 }
 
 // function returns the latest index's element and delets the latest index afterwards
@@ -24,7 +25,9 @@ func (s *Stack) Pop() (int, bool) {
 	i := 0
 	if s.IsEmpty() == false {
 		s.Peek()
+		i = len(s.Value) - 1
 		s.Value = s.Value[:i]
+		fmt.Println("Last Index poped!")
 		b = true
 	}
 	return i, b
@@ -37,7 +40,7 @@ func (s *Stack) Peek() (int, bool) {
 	if s.IsEmpty() == false {
 		i = len(s.Value) - 1
 		v := s.Value[i]
-		fmt.Println(v)
+		fmt.Println("Index:", i, ", Value:", v)
 		b = true
 	}
 	return i, b
@@ -60,5 +63,5 @@ func main() {
 	stack.Peek()
 	stack.Pop()
 	isEmpty := stack.IsEmpty()
-	fmt.Println(isEmpty)
+	fmt.Println("Is Stack empty?", isEmpty)
 }
