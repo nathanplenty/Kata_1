@@ -20,34 +20,36 @@ func (s *Stack) Push(val int) {
 
 // function returns the latest index's element and delets the latest index afterwards
 func (s *Stack) Pop() (int, bool) {
+	b := false
+	v := 0
 	if s.IsEmpty() == false {
 		i := len(s.Stack) - 1
-		e := s.Stack[i]
+		v = s.Stack[i]
 		s.Stack = s.Stack[:i]
-		return e, true
-	} else {
-		return 0, false
+		b = true
 	}
+	return v, b
 }
 
 // function returns the latest index's element
 func (s *Stack) Peek() (int, bool) {
+	b := false
+	v := 0
 	if s.IsEmpty() == false {
 		i := len(s.Stack) - 1
-		e := s.Stack[i]
-		return e, true
-	} else {
-		return 0, false
+		v = s.Stack[i]
+		b = true
 	}
+	return v, b
 }
 
 // function indicates whether the input is empty
 func (s *Stack) IsEmpty() bool {
+	b := false
 	if len(s.Stack) == 0 {
-		return true
-	} else {
-		return false
+		b = true
 	}
+	return b
 }
 
 func main() {
