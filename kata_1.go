@@ -14,34 +14,34 @@ func CreateNewStack() *Stack {
 }
 
 // function adds a new input at the top of the stack (or bottom of the table) LIFO-rule
-func (s *Stack) PushNewValue(v interface{}) {
-	s.Values = append(s.Values, v)
+func (stack *Stack) PushNewValue(v interface{}) {
+	stack.Values = append(stack.Values, v)
 }
 
 // function returns the latest index's element and delets the latest index afterwards
-func (s *Stack) PopLatestValue() interface{} {
-	if s.IsStackEmpty() == true {
+func (stack *Stack) PopLatestValue() interface{} {
+	if stack.IsStackEmpty() == true {
 		return "nil"
 	}
 	// <!> Full slice expressions
-	popepValue := s.PeekLatestValue()
-	s.Values = s.Values[:len(s.Values)-1]
+	popepValue := stack.PeekLatestValue()
+	stack.Values = stack.Values[:len(stack.Values)-1]
 	return popepValue
 }
 
 // function returns the latest index's element
 // del index -> use interface
-func (s *Stack) PeekLatestValue() interface{} {
-	if s.IsStackEmpty() == true {
+func (stack *Stack) PeekLatestValue() interface{} {
+	if stack.IsStackEmpty() == true {
 		return "nil"
 	}
-	return s.Values[len(s.Values)-1]
+	return stack.Values[len(stack.Values)-1]
 }
 
 // function indicates whether the input is empty
-func (s *Stack) IsStackEmpty() bool {
+func (stack *Stack) IsStackEmpty() bool {
 	// <!> If possible to One-Liner
-	if len(s.Values) == 0 {
+	if len(stack.Values) == 0 {
 		return true
 	}
 	return false
