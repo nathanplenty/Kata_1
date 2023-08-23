@@ -5,9 +5,8 @@ import (
 )
 
 func TestIsEmpty(t *testing.T) {
-	b := false
 	stack := CreateNewStack()
-	b = stack.IsStackEmpty()
+	b := stack.IsStackEmpty()
 	if b != true {
 		t.Errorf("b = %v; want true", b)
 	}
