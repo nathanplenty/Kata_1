@@ -54,6 +54,5 @@ func main() {
 	stack.PushNewValue("text")
 	fmt.Println("Peek:", stack.PeekLatestValue())
 	fmt.Println("Pop:", stack.PopLatestValue())
-	isEmpty := stack.IsStackEmpty()
-	fmt.Println("Is Stack empty?", isEmpty)
+	fmt.Println("Is Stack empty?", stack.IsStackEmpty())
 }
