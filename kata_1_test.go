@@ -1,36 +1,33 @@
 package main
 
 import (
-	// "fmt"
 	"testing"
 )
 
 func TestIsEmpty(t *testing.T) {
 	b := false
-	stack := NewStack()
-	b = stack.IsEmpty()
+	stack := CreateNewStack()
+	b = stack.IsStackEmpty()
 	if b != true {
 		t.Errorf("b = %v; want true", b)
 	}
 }
 
 func TestPushPeek(t *testing.T) {
-	stack := NewStack()
-	stack.Push(5)
-	i := stack.Peek()
-	v := stack.Values[i]
+	stack := CreateNewStack()
+	stack.PushNewValue(5)
+	v := stack.PeekLatestValue()
 	if v != 5 {
 		t.Errorf("v = %v; want 5", v)
 	}
 }
 
 func TestPop(t *testing.T) {
-	stack := NewStack()
-	stack.Push(5)
-	stack.Push(10)
-	i := stack.Pop()
-	v := stack.Values[i-1]
-	if v != 5 {
+	stack := CreateNewStack()
+	stack.PushNewValue(5)
+	stack.PushNewValue(10)
+	v := stack.PopLatestValue()
+	if v != 10 {
 		t.Errorf("v = %v; want 5", v)
 	}
 }
