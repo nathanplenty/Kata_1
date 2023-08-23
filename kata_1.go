@@ -8,52 +8,52 @@ type Stack struct {
 }
 
 // function with a pointer return (allows to ceate more structs)
-func NewStack() *Stack {
+func CreateNewStack() *Stack {
 	stack := Stack{}
 	return &stack
 }
 
 // function adds a new input at the top of the stack (or bottom of the table) LIFO-rule
-func (s *Stack) Push(v interface{}) {
+func (s *Stack) PushNewValue(v interface{}) {
 	s.Values = append(s.Values, v)
 }
 
 // function returns the latest index's element and delets the latest index afterwards
-func (s *Stack) Pop() int {
-	i := 0
-	if s.IsEmpty() == true {
-		return i
+func (s *Stack) PopLatestValue() interface{} {
+	if s.IsStackEmpty() == true {
+		return "nil"
 	}
-	i = len(s.Values) - 1
-	s.Values = s.Values[:i]
-	return i
+	// <!> Full slice expressions
+	popepValue := s.PeekLatestValue()
+	s.Values = s.Values[:len(s.Values)-1]
+	return popepValue
 }
 
 // function returns the latest index's element
-func (s *Stack) Peek() int {
-	i := 0
-	if s.IsEmpty() == true {
-		return i
+// del index -> use interface
+func (s *Stack) PeekLatestValue() interface{} {
+	if s.IsStackEmpty() == true {
+		return "nil"
 	}
-	i = len(s.Values) - 1
-	return i
+	return s.Values[len(s.Values)-1]
 }
 
 // function indicates whether the input is empty
-func (s *Stack) IsEmpty() bool {
-	b := false
+func (s *Stack) IsStackEmpty() bool {
+	// <!> If possible to One-Liner
 	if len(s.Values) == 0 {
-		b = true
+		return true
 	}
-	return b
+	return false
 }
 
 func main() {
-	stack := NewStack()
-	stack.Push(5)
-	stack.Push('2')
-	stack.Push("text")
-	fmt.Println("Peek:", stack.Values[stack.Peek()])
-	isEmpty := stack.IsEmpty()
+	stack := CreateNewStack()
+	stack.PushNewValue(5)
+	stack.PushNewValue('2')
+	stack.PushNewValue("text")
+	fmt.Println("Peek:", stack.PeekLatestValue())
+	fmt.Println("Pop:", stack.PopLatestValue())
+	isEmpty := stack.IsStackEmpty()
 	fmt.Println("Is Stack empty?", isEmpty)
 }
