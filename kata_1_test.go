@@ -6,18 +6,18 @@ import (
 
 func TestIsEmpty(t *testing.T) {
 	stack := CreateNewStack()
-	b := stack.IsStackEmpty()
-	if b != true {
-		t.Errorf("b = %v; want true", b)
+	boolean := stack.IsStackEmpty()
+	if boolean != true {
+		t.Errorf("boolean = %v; want true", boolean)
 	}
 }
 
 func TestPushPeek(t *testing.T) {
 	stack := CreateNewStack()
 	stack.PushNewValue(5)
-	v := stack.PeekLatestValue()
-	if v != 5 {
-		t.Errorf("v = %v; want 5", v)
+	value := stack.PeekLatestValue()
+	if value != 5 {
+		t.Errorf("value = %v; want 5", value)
 	}
 }
 
@@ -25,8 +25,16 @@ func TestPop(t *testing.T) {
 	stack := CreateNewStack()
 	stack.PushNewValue(5)
 	stack.PushNewValue(10)
-	v := stack.PopLatestValue()
-	if v != 10 {
-		t.Errorf("v = %v; want 5", v)
+	value := stack.PopLatestValue()
+	if value != 10 {
+		t.Errorf("value = %v; want 5", value)
+	}
+}
+
+func TestForNil(t *testing.T) {
+	stack := CreateNewStack()
+	value := stack.PeekLatestValue()
+	if value != nil {
+		t.Errorf("value = %v; want <nil>", value)
 	}
 }
